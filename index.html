@@ -122,6 +122,11 @@ nav .mas span{background:var(--main);color:var(--onmain);width:48px;height:48px;
 .stats div{background:var(--bg);border-radius:14px;padding:10px}
 .stats small{display:block;font-size:12px;color:var(--soft);line-height:1.25}
 .stats b{display:block;font-size:17px;font-weight:600;margin-top:4px}
+.acerca{text-align:center;padding:26px 18px 22px}
+.acerca svg{width:64px;height:64px;display:block;margin:0 auto 10px}
+.acerca .nom{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.acerca .por{margin-top:10px;font-size:15px;color:var(--soft)}
+.acerca .por b{display:block;color:var(--ink);font-size:20px;margin-top:2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -422,6 +427,9 @@ function vAjustes(){
    '<div class="card"><h2>Notificaciones</h2><div class="chk"><input type="checkbox" id="nS"'+(D.notif.semanal?' checked':'')+'><span>Resumen semanal cada domingo</span></div><div class="sub">Te dice si vas atrasado con tus horas o te felicita si vas bien 😊</div><label>Hora del resumen</label><input type="time" id="nH" value="'+esc(D.notif.hora||'19:00')+'"><div class="chk"><input type="checkbox" id="nMe"'+(D.notif.mensual?' checked':'')+'><span>Recordatorio el día 1 de cada mes para enviar tu informe y tu copia de respaldo</span></div><button class="btn" onclick="guardarNotif()">Guardar</button><button class="btn alt" onclick="probarNotif()">Probar el resumen ahora</button><div class="sub" style="margin-top:10px">Los recordatorios de estudios y revisitas se activan dentro de cada persona.</div></div>'+
    '<div class="card"><h2>Copia de respaldo</h2>'+(respaldoPendiente()?'<div class="aviso-r">Hace más de un mes que no guardas tu copia. Envíatela hoy para no perder tus datos.</div>':'')+'<div class="sub">Guarda una copia de tus datos (por ejemplo, envíatela por WhatsApp o correo). Si cambias de teléfono, la pegas abajo y recuperas todo.</div><button class="btn" onclick="compartir()">Enviar copia de respaldo</button>'+(D.ultimoRespaldo?'<div class="sub">Última copia: '+new Date(D.ultimoRespaldo).toLocaleDateString('es')+'</div>':'')+''+
    '<label>Restaurar desde una copia</label><textarea id="aR" placeholder="Pega aquí tu copia de respaldo"></textarea><button class="btn alt" onclick="restaurar()">Restaurar</button></div>'+
+   '<div class="card acerca"><svg viewBox="0 0 108 108" aria-hidden="true"><circle cx="54" cy="54" r="50" style="fill:var(--main)"/><path d="M54,22a32,32 0,1 1,0 64a32,32 0,1 1,0 -64zM54,30a24,24 0,1 0,0 48a24,24 0,1 0,0 -48z" style="fill:var(--onmain)"/><path d="M51,38h6v17l12,8 -3,5 -15,-10z" style="fill:var(--onmain)"/></svg>'+
+   '<div class="nom">Mis Horas</div><div class="sub">Tu registro de horas, estudios y revisitas</div>'+
+   '<div class="por">Creada por<b class="serif">EL TÍO 🧑🏽‍💻</b></div><div class="sub" style="margin-top:12px">© 2026</div></div>'+
    '<button class="btn alt" style="width:auto;margin:0 16px;padding:12px 18px" onclick="ir(\'inicio\')">‹ Volver</button>';
 }
 function guardarMeta(){var v=parseInt(document.getElementById('aM').value,10);if(!(v>0)){aviso('Meta no válida');return}D.meta=v;D.nombre=document.getElementById('aN').value.trim();guardar();aviso('Guardado');ir('inicio')}
